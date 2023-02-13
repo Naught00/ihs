@@ -9,6 +9,7 @@
 %% ***  ***
 %% 
 %% Copyright 1994-2011 Patrick W Daly
+%% Copyright 2022 Mark Naughton
  % ===============================================================
  % IMPORTANT NOTICE:
  % This bibliographic style (bst) file has been generated from one or
@@ -73,7 +74,7 @@ STRINGS { s t}
 FUNCTION {output.nonnull}
 { 's :=
   output.state mid.sentence =
-    { ", " * write$ }
+    { " " * write$ }
     { output.state after.block =
         { add.period$ write$
           newline$
@@ -993,16 +994,13 @@ FUNCTION {book}
   if$
   format.btitle "title" output.check
   crossref missing$
-    { format.bvolume output
-      format.number.series output
+    { 
       format.publisher.address output
     }
     {
-      format.book.crossref output.nonnull
       format.date "year" output.check
     }
   if$
-  format.edition output
   format.note output
   fin.entry
 }
